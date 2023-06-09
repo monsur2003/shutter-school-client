@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import useInstructor from "../../../Hook/useInstructor/useInstructor";
+
 import Title from "../../../Components/Title/Title";
 import InstructorCard from "../InstructorCard";
+
+import useInstructor from "../../../Hook/useInstructor";
 
 const Instructor = () => {
    const [users, loader] = useInstructor();

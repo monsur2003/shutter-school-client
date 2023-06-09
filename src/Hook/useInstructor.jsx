@@ -13,6 +13,7 @@ const useInstructor = () => {
             setLoader(false);
          });
    }, []);
+
    return [users, loader];
 };
 

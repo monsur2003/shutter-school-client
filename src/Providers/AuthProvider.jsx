@@ -10,6 +10,7 @@ import {
    updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 // import axios from "axios";
 
@@ -52,20 +53,19 @@ const AuthProvider = ({ children }) => {
    useEffect(() => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
          setUser(currentUser);
-         setLoader(false);
-         console.log("userfrom ", currentUser);
-         //  if (currentUser) {
-         //     axios
-         //        .post("http://localhost:3000/jwt", {
-         //           email: currentUser.email,
-         //        })
-         //        .then((data) => {
-         //           console.log(data.data.token);
-         //           localStorage.setItem("access_token", data.data.token);
-         //        });
-         //  } else {
-         //     localStorage.removeItem("access_token");
-         //  }
+
+         if (currentUser) {
+            axios
+               .post("http://localhost:5000/jwt", {
+                  email: currentUser.email,
+               })
+               .then((data) => {
+                  localStorage.setItem("access-token", data.data.token);
+                  setLoader(false);
+               });
+         } else {
+            localStorage.removeItem("access-token");
+         }
       });
       return () => {
          return unSubscribe();
