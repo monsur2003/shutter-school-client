@@ -5,7 +5,7 @@ import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
 
 const DashBoard = () => {
-   const admin = false;
+   const admin = true;
    const instructor = false;
    return (
       <>
