@@ -19,7 +19,7 @@ const Navbar = () => {
             <ActiveLink to="/">Home</ActiveLink>
          </li>
          <li>
-            <ActiveLink to="/secret">Instructor</ActiveLink>
+            <ActiveLink to="/instructor">Instructor</ActiveLink>
          </li>
 
          <li>

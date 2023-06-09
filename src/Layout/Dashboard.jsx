@@ -5,7 +5,8 @@ import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
 
 const DashBoard = () => {
-   const instructor = true;
+   const admin = false;
+   const instructor = false;
    return (
       <>
          <Navbar></Navbar>
@@ -19,20 +20,47 @@ const DashBoard = () => {
                      Shutter School
                   </div>
                   <div className="text-center my-4">
-                     {instructor ? (
+                     {admin ? (
+                        <>
+                           <Link to="dashboard/manageclass">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 Manage class
+                              </span>
+                           </Link>
+                           <Link to="dashboard/manageuser">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 Manage users
+                              </span>
+                           </Link>
+                        </>
+                     ) : instructor ? (
                         <>
                            <Link to="dashboard/addclass">
                               <span className="btn btn-accent btn-sm btn-block">
                                  Add Class
                               </span>
                            </Link>
+                           <Link to="dashboard/myclass">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 My Class
+                              </span>
+                           </Link>
                         </>
                      ) : (
                         <>
-                           {" "}
-                           <Link className="" to="dashboard/allclass">
+                           <Link className="" to="dashboard/selectedclass">
                               <span className="btn btn-accent btn-sm btn-block">
-                                 All classes
+                                 My selected class
+                              </span>
+                           </Link>
+                           <Link className="" to="dashboard/enrolledclass">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 My enrolled class
+                              </span>
+                           </Link>
+                           <Link className="" to="dashboard/mypayment">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 My payment
                               </span>
                            </Link>
                         </>

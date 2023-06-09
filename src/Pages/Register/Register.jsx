@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { authContext } from "../../Providers/AuthProvider";
 import image1 from "../../assets/authentication/register.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
    const { createUser, updateName, googleLogin } = useContext(authContext);
+   const navigate = useNavigate();
    const [photo, setPhoto] = useState(null);
    console.log(photo);
    const {
@@ -46,8 +47,34 @@ const Register = () => {
       createUser(data?.email, data?.password)
          .then((result) => {
             const createdUser = result.user;
-            console.log(createdUser);
             updateName(data?.name, photo);
+            const saveUser = {
+               email: data.email,
+               name: data?.name,
+               photoUrl: photo,
+               role: "student",
+            };
+            fetch("http://localhost:5000/users", {
+               method: "POST",
+               headers: {
+                  "content-type": "application/json",
+               },
+               body: JSON.stringify(saveUser),
+            })
+               .then((res) => res.json())
+               .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                     Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Account created successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                     });
+                     navigate("/");
+                  }
+               });
          })
          .catch((err) => console.log(err));
    };
