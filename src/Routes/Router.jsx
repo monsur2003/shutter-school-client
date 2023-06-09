@@ -1,19 +1,22 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "../shared/Navbar/Navbar";
+
 import Main from "../Layout/Main";
-import DashBoard from "../Pages/DashBoard/DashBoard";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
+import Home from "../Pages/Homes/Home/Home";
+import AllClass from "../Pages/DashBoard/AllClass/AllClass";
+import DashBoard from "../Layout/Dashboard";
 const router = createBrowserRouter([
    {
       path: "/",
       element: <Main></Main>,
       children: [
          {
-            path: "dashboard",
-            element: <DashBoard></DashBoard>,
+            path: "/",
+            element: <Home></Home>,
          },
+
          {
             path: "login",
             element: <Login></Login>,
@@ -21,6 +24,16 @@ const router = createBrowserRouter([
          {
             path: "register",
             element: <Register></Register>,
+         },
+      ],
+   },
+   {
+      path: "/dashboard",
+      element: <DashBoard></DashBoard>,
+      children: [
+         {
+            path: "dashboard/allclass",
+            element: <AllClass></AllClass>,
          },
       ],
    },

@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { authContext } from "../../Providers/AuthProvider";
 import image1 from "../../assets/authentication/register.png";
 import { Link } from "react-router-dom";
 const Register = () => {
    const { createUser, updateName, googleLogin } = useContext(authContext);
-
+   const [photo, setPhoto] = useState(null);
+   console.log(photo);
    const {
       register,
       handleSubmit,
@@ -24,12 +25,30 @@ const Register = () => {
    };
 
    const onSubmit = (data) => {
-      console.log(data);
+      const formData = new FormData();
+      formData.append("image", data.photoUrl[0]);
+
+      const url = `https://api.imgbb.com/1/upload?key=${
+         import.meta.env.VITE_IMGBB
+      }`;
+      fetch(url, {
+         method: "POST",
+         body: formData,
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            setPhoto(data.data.display_url);
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+
+      console.log(formData);
       createUser(data?.email, data?.password)
          .then((result) => {
             const createdUser = result.user;
             console.log(createdUser);
-            updateName(data?.name, data?.photoUrl);
+            updateName(data?.name, photo);
          })
          .catch((err) => console.log(err));
    };
@@ -156,9 +175,9 @@ const Register = () => {
                      <input
                         id="photoUrl"
                         name="photoUrl"
-                        type="text"
+                        type="file"
                         {...register("photoUrl")}
-                        className="input input-primary w-full mt-4"
+                        className="file-input file-input-bordered file-input-primary mt-4 w-full my-2"
                         placeholder="Photo URL"
                      />
                   </div>
