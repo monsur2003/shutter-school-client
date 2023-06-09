@@ -5,6 +5,7 @@ import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
 
 const DashBoard = () => {
+   const instructor = true;
    return (
       <>
          <Navbar></Navbar>
@@ -18,11 +19,24 @@ const DashBoard = () => {
                      Shutter School
                   </div>
                   <div className="text-center my-4">
-                     <Link className="" to="dashboard/allclass">
-                        <span className="btn btn-accent btn-sm btn-block">
-                           All classes
-                        </span>
-                     </Link>
+                     {instructor ? (
+                        <>
+                           <Link to="dashboard/addclass">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 Add Class
+                              </span>
+                           </Link>
+                        </>
+                     ) : (
+                        <>
+                           {" "}
+                           <Link className="" to="dashboard/allclass">
+                              <span className="btn btn-accent btn-sm btn-block">
+                                 All classes
+                              </span>
+                           </Link>
+                        </>
+                     )}
                   </div>
                </div>
                <div className="w-[70%] mx-auto">

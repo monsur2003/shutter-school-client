@@ -1,0 +1,87 @@
+[
+   {
+      "name": "Photography Composition",
+      "image": "https://i.ibb.co/b2kd6br/photography-Composition.jpg",
+      "instructor_name": "Farhan Abdullah",
+      "instructor_email": "farhan_abdullah96@hotmail.com",
+      "seats": 200,
+      "price": 230,
+      "status": "pending",
+      "enrolled": 0
+   },
+   {
+      "name": "Image Editing",
+      "image": "https://i.ibb.co/7V2Yqxf/Image-Editing.png",
+      "instructor_name": "Zayn Abdullah",
+      "instructor_email": "zaynabdullah@gmail.com",
+      "seats": 150,
+      "price": 200,
+      "status": "pending",
+      "enrolled": 0
+   },
+
+   {
+      "name": "Landscape Photography",
+      "image": "https://i.ibb.co/Scjkps0/Landscape-Photography.jpg",
+      "instructor_name": "Lamia Maisha",
+      "instructor_email": "lamia.maishas@gmail.com",
+      "seats": 50,
+      "price": 500,
+      "status": "pending",
+      "enrolled": 0
+   },
+   {
+      "name": "Photoshop Retouching",
+      "image": "https://i.ibb.co/XCg218X/Photoshop-Retouching.jpg",
+      "instructor_name": "Najmus Sakib",
+      "instructor_email": "najmus.sakib@gmail.com",
+      "seats": 80,
+      "price": 150,
+      "status": "pending",
+      "enrolled": 40
+   },
+
+   {
+      "name": "Travel Photography",
+      "image": "https://i.ibb.co/qnJ66BM/Travel-Photography.jpg",
+      "instructor_name": "Shanaj Akter Mishu",
+      "instructor_email": "saktermishu@gmail.com",
+      "seats": 1500,
+      "price": 50,
+      "status": "pending",
+      "enrolled": 0
+   },
+
+   {
+      "name": "Digital Camera Functionality",
+      "image": "https://i.ibb.co/7GqCDqn/Digital-Camera-Functionality.webp",
+      "instructor_name": "Arman Rahman",
+      "instructor_email": "arman.rahman@gmail.com",
+      "seats": 0,
+      "price": 200,
+      "status": "pending",
+      "enrolled": 200
+   },
+
+   {
+      "name": "Micro Photography",
+      "image": "https://i.ibb.co/fF49QrQ/Micro-Photography.jpg",
+      "instructor_name": "Zayn Abdullah",
+      "instructor_email": "zaynabdullah@gmail.com",
+      "seats": 1000,
+      "price": 16,
+      "status": "pending",
+      "enrolled": 10
+   },
+
+   {
+      "name": "Photography Essentials",
+      "image": "https://i.ibb.co/DrtP0F9/Photography-Essentials.jpg",
+      "instructor_name": "Farhan Abdullah",
+      "instructor_email": "farhan_abdullah96@hotmail.com",
+      "seats": 0,
+      "price": 25,
+      "status": "pending",
+      "enrolled": 100
+   }
+]

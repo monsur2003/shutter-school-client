@@ -1,0 +1,38 @@
+[
+   {
+      "name": "Alex harry",
+      "email": "alex@example.com",
+      "role": "admin",
+      "photoUrl": "https://i.ibb.co/xjdJSZg/jurica-koletic-7-YVZYZe-ITc8-unsplash.jpg"
+   },
+   {
+      "name": "titu",
+      "email": "titu@example.com",
+      "role": "student",
+      "photoUrl": "https://i.ibb.co/BszK1zF/amir-seilsepour-5vg-Sar-Qim-A-unsplash.jpg"
+   },
+   {
+      "name": "Michael Johnson",
+      "email": "michael@example.com",
+      "role": "instructor",
+      "photoUrl": "https://i.ibb.co/bv48775/client-4.jpg"
+   },
+   {
+      "name": "Farhan Abdullah",
+      "email": "farhan@example.com",
+      "role": "student",
+      "photoUrl": "https://i.ibb.co/9sPshc6/oliver-ragfelt-kh-V4f-Ty6-D8-unsplash.jpg"
+   },
+   {
+      "name": "Hosne Mubarak",
+      "email": "hosne@example.com",
+      "role": "instructor",
+      "photoUrl": "https://i.ibb.co/PmfnJrb/client-2.jpg"
+   },
+   {
+      "name": "Monsur Alam",
+      "email": "monsur@example.com",
+      "role": "admin",
+      "photoUrl": "https://i.ibb.co/PcwkY4s/client-3.jpg"
+   }
+]

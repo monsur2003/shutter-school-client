@@ -23,7 +23,7 @@ const Navbar = () => {
          </li>
 
          <li>
-            <ActiveLink to="/menu">Classes</ActiveLink>
+            <ActiveLink to="/classes">Classes</ActiveLink>
          </li>
 
          <li>
@@ -32,7 +32,7 @@ const Navbar = () => {
       </>
    );
    return (
-      <div className="navbar  scroll-auto fixed mb-10 z-20 bg-opacity-25 text-red-400 py-4 px-9 bg-[#101010]">
+      <div className="navbar  scroll-auto fixed mb-10 z-20 bg-opacity-25 text-gray-300 px-9 bg-[#101010]">
          <div className="navbar-start">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
                </label>
                <ul
                   tabIndex={0}
-                  className="menu menu-compact dropdown-content mt-3 p-2 px-4 shadow  rounded-box w-52">
+                  className="menu menu-compact dropdown-content  p-2 px-4 shadow  rounded-box w-52">
                   {navOption}
                </ul>
             </div>
@@ -77,11 +77,14 @@ const Navbar = () => {
                </div>
             ) : (
                <Link to="/login">
-                  <button
-                     className="btn btn-primary md:btn-md btn-sm"
-                     to="/login">
-                     Login
-                  </button>
+                  <div className="flex items-center gap-x-2">
+                     <FaUserAlt className="text-4xl"></FaUserAlt>
+                     <button
+                        className="btn btn-primary md:btn-md btn-sm"
+                        to="/login">
+                        Login
+                     </button>
+                  </div>
                </Link>
             )}
          </div>

@@ -43,7 +43,6 @@ const Register = () => {
             console.log(err);
          });
 
-      console.log(formData);
       createUser(data?.email, data?.password)
          .then((result) => {
             const createdUser = result.user;
