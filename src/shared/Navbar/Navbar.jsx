@@ -32,7 +32,7 @@ const Navbar = () => {
       </>
    );
    return (
-      <div className="navbar  scroll-auto fixed mb-10 z-20 bg-opacity-25 text-gray-300 px-9 bg-[#101010]">
+      <div className="navbar text-gray-300 px-9 py-4 bg-[#090220]">
          <div className="navbar-start">
             <div className="dropdown">
                <label tabIndex={0} className="btn btn-ghost lg:hidden">

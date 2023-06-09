@@ -10,14 +10,17 @@ const DashBoard = () => {
    return (
       <>
          <Navbar></Navbar>
-         <div className="py-[76px]">
+         <div className="">
             <Helmet>
                <title>Shutter | dashboard</title>
             </Helmet>
             <div className="flex">
                <div className="w-[25%] bg-blue-400 h-[100vh]">
-                  <div className="border-b-2 border-gray-500 rounded-tr-2xl rounded-tl-2xl pb-4 pt-2 text-5xl font-bold">
-                     Shutter School
+                  <div className="border-b-2 text-center border-gray-500 rounded-tr-2xl rounded-tl-2xl pb-4 pt-2 text-5xl font-bold">
+                     Shutter
+                     <p className="text-[20px] font-semibold space-x-6">
+                        School
+                     </p>
                   </div>
                   <div className="text-center my-4">
                      {admin ? (
@@ -27,7 +30,7 @@ const DashBoard = () => {
                                  Manage class
                               </span>
                            </Link>
-                           <Link to="dashboard/manageuser">
+                           <Link className="my-3" to="dashboard/manageuser">
                               <span className="btn btn-accent btn-sm btn-block">
                                  Manage users
                               </span>
@@ -40,7 +43,7 @@ const DashBoard = () => {
                                  Add Class
                               </span>
                            </Link>
-                           <Link to="dashboard/myclass">
+                           <Link className="my-3" to="dashboard/myclass">
                               <span className="btn btn-accent btn-sm btn-block">
                                  My Class
                               </span>
@@ -53,7 +56,7 @@ const DashBoard = () => {
                                  My selected class
                               </span>
                            </Link>
-                           <Link className="" to="dashboard/enrolledclass">
+                           <Link className="mt-4" to="dashboard/enrolledclass">
                               <span className="btn btn-accent btn-sm btn-block">
                                  My enrolled class
                               </span>

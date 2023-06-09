@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PopularClassCard from "./PopularClassCard/PopularClassCard";
 import Title from "../../../Components/Title/Title";
+import { authContext } from "../../../Providers/AuthProvider";
 
 const PopularClass = () => {
    const [popularClass, setPopularClass] = useState([]);
+   const { loader } = useContext(authContext);
    console.log(popularClass);
+
    useEffect(() => {
       fetch("http://localhost:5000/classes")
          .then((res) => res.json())
@@ -15,6 +18,13 @@ const PopularClass = () => {
             setPopularClass(sortedClasses);
          });
    }, []);
+   if (loader) {
+      return (
+         <div className="w-full h-[100vh] flex justify-center items-center">
+            <span class="loader"></span>
+         </div>
+      );
+   }
    return (
       <div className="my-8 mt-[100px]">
          <div>

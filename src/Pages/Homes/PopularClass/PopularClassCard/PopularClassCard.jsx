@@ -2,7 +2,7 @@ import React from "react";
 
 const PopularClassCard = ({ popular }) => {
    return (
-      <div className="card w-[350px] gap-x-4  shadow-xl">
+      <div className="card w-[350px] gap-x-4 bg-white text-gray-900  shadow-xl">
          <figure>
             <img
                src={popular?.image}
@@ -12,8 +12,8 @@ const PopularClassCard = ({ popular }) => {
          </figure>
          <div className="card-body">
             <h2 className="card-title">
-               Shoes!
-               <div className="badge badge-secondary">NEW</div>
+               {popular?.name}
+               <div className="badge badge-secondary">Popular</div>
             </h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div className="card-actions justify-end">

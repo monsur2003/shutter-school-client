@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <AuthProvider>
          <HelmetProvider>
-            <RouterProvider router={router}></RouterProvider>
+            <div className="bg-base-200">
+               <RouterProvider router={router}></RouterProvider>
+            </div>
          </HelmetProvider>
       </AuthProvider>
    </React.StrictMode>

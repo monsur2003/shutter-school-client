@@ -4,7 +4,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import { useNavigate } from "react-router-dom";
 
-const AllClassesCard = ({ singleClass, title }) => {
+const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const { user } = useContext(authContext);
    const { name, image, instructor_name, price } = singleClass;
 
@@ -36,10 +36,15 @@ const AllClassesCard = ({ singleClass, title }) => {
                   Swal.fire({
                      position: "center",
                      icon: "success",
-                     title: "Class added success",
+                     title: "Class added successfully",
                      showConfirmButton: false,
                      timer: 1500,
                   });
+                  // Decrease the seat value
+                  setSingleClass((prevClass) => ({
+                     ...prevClass,
+                     seats: prevClass.seats - 1,
+                  }));
                }
             });
       } else {

@@ -18,7 +18,34 @@ const Register = () => {
    const handleGoogle = () => {
       googleLogin()
          .then((result) => {
-            console.log(result);
+            const loggedInUser = result.user;
+            const saveUser = {
+               name: loggedInUser.displayName,
+               email: loggedInUser.email,
+               photoUrl: loggedInUser.photoURL,
+               role: "student",
+            };
+            fetch("http://localhost:5000/users", {
+               method: "POST",
+               headers: {
+                  "content-type": "application/json",
+               },
+               body: JSON.stringify(saveUser),
+            })
+               .then((res) => res.json())
+               .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                     Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Account created successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                     });
+                     navigate("/");
+                  }
+               });
          })
          .catch((error) => {
             console.log(error);
@@ -48,12 +75,14 @@ const Register = () => {
          .then((result) => {
             const createdUser = result.user;
             updateName(data?.name, photo);
+
             const saveUser = {
                email: data.email,
                name: data?.name,
                photoUrl: photo,
                role: "student",
             };
+
             fetch("http://localhost:5000/users", {
                method: "POST",
                headers: {
