@@ -22,7 +22,16 @@ const ManageUsers = () => {
    };
 
    const makeInstructor = (id) => {
-      console.log(id);
+      fetch(`http://localhost:5000/users/instructor/${id}`, {
+         method: "PATCH",
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            if (data.modifiedCount > 0) {
+               refetch();
+               toast("Instructor updated successfully");
+            }
+         });
    };
 
    return (
