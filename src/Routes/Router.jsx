@@ -5,7 +5,7 @@ import Main from "../Layout/Main";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Home from "../Pages/Homes/Home/Home";
-import AllClass from "../Pages/DashBoard/AllClass/AllClass";
+
 import DashBoard from "../Layout/Dashboard";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import AddClass from "../Pages/DashBoard/AddClass/AddClass";
@@ -16,6 +16,8 @@ import MySelectedClass from "../Pages/DashBoard/Student/MySelectedClass/MySelect
 import MyEnrolledClass from "../Pages/DashBoard/Student/MyEnrolledClass/MyEnrolledClass";
 import MyPayment from "../Pages/DashBoard/Student/MyPayment/MyPayment";
 import Instructor from "../Pages/Instructors/Instructor/Instructor";
+import PrivateRoute from "./PrivateRoute";
+
 const router = createBrowserRouter([
    {
       path: "/",
@@ -27,7 +29,11 @@ const router = createBrowserRouter([
          },
          {
             path: "/instructor",
-            element: <Instructor></Instructor>,
+            element: (
+               <PrivateRoute>
+                  <Instructor></Instructor>
+               </PrivateRoute>
+            ),
          },
          {
             path: "login",
@@ -47,10 +53,6 @@ const router = createBrowserRouter([
       path: "/dashboard",
       element: <DashBoard></DashBoard>,
       children: [
-         {
-            path: "dashboard/allclass",
-            element: <AllClass></AllClass>,
-         },
          {
             path: "dashboard/addclass",
             element: <AddClass></AddClass>,

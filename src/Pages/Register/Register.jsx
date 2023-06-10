@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { authContext } from "../../Providers/AuthProvider";
 import image1 from "../../assets/authentication/register.png";
 import { Link, useNavigate } from "react-router-dom";
+import { saveUser } from "../../api/auth";
 const Register = () => {
    const { createUser, updateName, googleLogin } = useContext(authContext);
    const navigate = useNavigate();
@@ -19,33 +20,7 @@ const Register = () => {
       googleLogin()
          .then((result) => {
             const loggedInUser = result.user;
-            const saveUser = {
-               name: loggedInUser.displayName,
-               email: loggedInUser.email,
-               photoUrl: loggedInUser.photoURL,
-               role: "student",
-            };
-            fetch("http://localhost:5000/users", {
-               method: "POST",
-               headers: {
-                  "content-type": "application/json",
-               },
-               body: JSON.stringify(saveUser),
-            })
-               .then((res) => res.json())
-               .then((data) => {
-                  console.log(data);
-                  if (data.insertedId) {
-                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Account created successfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                     });
-                     navigate("/");
-                  }
-               });
+            saveUser(loggedInUser);
          })
          .catch((error) => {
             console.log(error);
@@ -73,37 +48,9 @@ const Register = () => {
 
       createUser(data?.email, data?.password)
          .then((result) => {
-            const createdUser = result.user;
             updateName(data?.name, photo);
-
-            const saveUser = {
-               email: data.email,
-               name: data?.name,
-               photoUrl: photo,
-               role: "student",
-            };
-
-            fetch("http://localhost:5000/users", {
-               method: "POST",
-               headers: {
-                  "content-type": "application/json",
-               },
-               body: JSON.stringify(saveUser),
-            })
-               .then((res) => res.json())
-               .then((data) => {
-                  console.log(data);
-                  if (data.insertedId) {
-                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Account created successfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                     });
-                     navigate("/");
-                  }
-               });
+            const createdUser = result.user;
+            saveUser(createdUser);
          })
          .catch((err) => console.log(err));
    };

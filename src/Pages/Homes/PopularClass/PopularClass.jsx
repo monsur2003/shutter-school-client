@@ -18,13 +18,7 @@ const PopularClass = () => {
             setPopularClass(sortedClasses);
          });
    }, []);
-   if (loader) {
-      return (
-         <div className="w-full h-[100vh] flex justify-center items-center">
-            <span class="loader"></span>
-         </div>
-      );
-   }
+
    return (
       <div className="my-8 mt-[100px]">
          <div>

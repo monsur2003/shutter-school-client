@@ -61,11 +61,11 @@ const AuthProvider = ({ children }) => {
                })
                .then((data) => {
                   localStorage.setItem("access-token", data.data.token);
-                  setLoader(false);
                });
          } else {
             localStorage.removeItem("access-token");
          }
+         setLoader(false);
       });
       return () => {
          return unSubscribe();

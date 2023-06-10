@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/authentication/login.png";
 import { authContext } from "../../Providers/AuthProvider";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
    const { googleLogin, signIn } = useContext(authContext);
@@ -25,7 +26,7 @@ const Login = () => {
       signIn(email, password)
          .then((result) => {
             const loggedIn = result.user;
-            console.log(loggedIn);
+            saveUser(loggedIn);
          })
          .catch((err) => {
             console.log(err);

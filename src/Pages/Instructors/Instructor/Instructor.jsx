@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 import Title from "../../../Components/Title/Title";
 import InstructorCard from "../InstructorCard";
+import coverImage from "../../../assets/banner/cover.jpg";
 
 import useInstructor from "../../../Hook/useInstructor";
+import Cover from "../../../Components/Cover/Cover";
 
 const Instructor = () => {
    const [users, loader] = useInstructor();
@@ -19,7 +21,16 @@ const Instructor = () => {
 
    return (
       <div>
-         <div></div>
+         <div>
+            <Cover
+               image={coverImage}
+               heading={"Meet our senior instructor"}
+               title={
+                  "Lead instructors are responsible for leading specific classes or programs. They possess a deep understanding of the subject matter and excel in delivering engaging and"
+               }></Cover>
+
+            <h3>Helllo</h3>
+         </div>
          <Title
             heading={"All Instructor list"}
             subHeading={"Meet Our Experienced Instructors"}></Title>

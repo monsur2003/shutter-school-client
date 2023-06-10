@@ -3,9 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
+import useAdmin from "../Hook/useAdmin";
 
 const DashBoard = () => {
-   const admin = false;
+   // const admin = false;
+   const [isAdmin] = useAdmin();
+   console.log(isAdmin);
    const instructor = false;
    return (
       <>
@@ -15,7 +18,7 @@ const DashBoard = () => {
                <title>Shutter | dashboard</title>
             </Helmet>
             <div className="flex">
-               <div className="w-[25%] bg-blue-400 h-[100vh]">
+               <div className="w-[25%]  bg-[#4285c4] h-[100vh]">
                   <div className="border-b-2 text-center border-gray-500 rounded-tr-2xl rounded-tl-2xl pb-4 pt-2 text-5xl font-bold">
                      Shutter
                      <p className="text-[20px] font-semibold space-x-6">
@@ -23,7 +26,7 @@ const DashBoard = () => {
                      </p>
                   </div>
                   <div className="text-center my-4">
-                     {admin ? (
+                     {isAdmin ? (
                         <>
                            <Link to="dashboard/manageclass">
                               <span className="btn btn-accent btn-sm btn-block">
