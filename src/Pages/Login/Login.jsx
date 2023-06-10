@@ -1,16 +1,45 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/authentication/login.png";
 import { authContext } from "../../Providers/AuthProvider";
-import { saveUser } from "../../api/auth";
+
+import Swal from "sweetalert2";
 
 const Login = () => {
    const { googleLogin, signIn } = useContext(authContext);
+   const navigate = useNavigate();
 
    const handleGoogle = () => {
       googleLogin()
          .then((result) => {
-            console.log(result);
+            const loggedInUser = result.user;
+            const saveUser = {
+               name: loggedInUser.displayName,
+               email: loggedInUser.email,
+               photoUrl: loggedInUser.photoURL,
+               role: "student",
+            };
+            fetch("http://localhost:5000/users", {
+               method: "POST",
+               headers: {
+                  "content-type": "application/json",
+               },
+               body: JSON.stringify(saveUser),
+            })
+               .then((res) => res.json())
+               .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                     Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Account created successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                     });
+                     navigate("/");
+                  }
+               });
          })
          .catch((error) => {
             console.log(error);
@@ -26,7 +55,14 @@ const Login = () => {
       signIn(email, password)
          .then((result) => {
             const loggedIn = result.user;
-            saveUser(loggedIn);
+            Swal.fire({
+               position: "center",
+               icon: "success",
+               title: "Account created successfully",
+               showConfirmButton: false,
+               timer: 1500,
+            });
+            navigate("/");
          })
          .catch((err) => {
             console.log(err);

@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
 import useAdmin from "../Hook/useAdmin";
 
+import { authContext } from "../Providers/AuthProvider";
+import useIns from "../Hook/useIns";
+
 const DashBoard = () => {
-   // const admin = false;
-   const [isAdmin] = useAdmin();
-   console.log(isAdmin);
-   const instructor = false;
+   const { user, loader } = useContext(authContext);
+
+   const isAdmin = useAdmin();
+   const isInstructor = useIns();
+   console.log({ isAdmin });
+
    return (
       <>
          <Navbar></Navbar>
@@ -39,7 +44,7 @@ const DashBoard = () => {
                               </span>
                            </Link>
                         </>
-                     ) : instructor ? (
+                     ) : isInstructor ? (
                         <>
                            <Link to="dashboard/addclass">
                               <span className="btn btn-accent btn-sm btn-block">

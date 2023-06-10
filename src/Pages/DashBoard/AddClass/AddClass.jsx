@@ -41,8 +41,8 @@ const AddClass = () => {
          price,
          availableSeats,
          photo: image,
+         status: "pending",
       };
-      console.log({ course });
    };
 
    return (

@@ -1,45 +1,59 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
+import Title from "../../../../Components/Title/Title";
 
 const ManageUsers = () => {
+   const queryClient = useQueryClient();
+
    const { data: users = [], refetch } = useQuery(["users"], async () => {
       const res = await fetch("http://localhost:5000/users", {});
       return res.json();
    });
 
+   const makeAdminMutation = useMutation(
+      (id) =>
+         fetch(`http://localhost:5000/users/admin/${id}`, {
+            method: "PATCH",
+         }).then((res) => res.json()),
+      {
+         onSuccess: () => {
+            refetch();
+            toast("Admin updated successfully");
+         },
+      }
+   );
+
+   const makeInstructorMutation = useMutation(
+      (id) =>
+         fetch(`http://localhost:5000/users/instructor/${id}`, {
+            method: "PATCH",
+         }).then((res) => res.json()),
+      {
+         onSuccess: () => {
+            refetch();
+            toast("Instructor updated successfully");
+         },
+      }
+   );
+
    const makeAdmin = (id) => {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
-         method: "PATCH",
-      })
-         .then((res) => res.json())
-         .then((data) => {
-            if (data.modifiedCount > 0) {
-               refetch();
-               toast("Admin updated successfully");
-            }
-         });
+      makeAdminMutation.mutate(id);
    };
 
    const makeInstructor = (id) => {
-      fetch(`http://localhost:5000/users/instructor/${id}`, {
-         method: "PATCH",
-      })
-         .then((res) => res.json())
-         .then((data) => {
-            if (data.modifiedCount > 0) {
-               refetch();
-               toast("Instructor updated successfully");
-            }
-         });
+      makeInstructorMutation.mutate(id);
    };
 
    return (
       <div>
-         <h2>THis is manage user page{users.length}</h2>
+         <Title subHeading={"Manage users from here"}></Title>
 
-         <div>
+         <div className="-mt-8">
             <div className="overflow-x-auto border-2 border-blue-800 shadow-xl rounded-xl p-8 table-zebra">
+               <h3 className="text-3xl font-bold text-center mb-2">
+                  Total users {users.length}
+               </h3>
                <table className="min-w-full bg-white border border-gray-300">
                   <thead>
                      <tr>
@@ -67,26 +81,24 @@ const ManageUsers = () => {
                            <td className="py-4 px-6 border-b">{user?.name}</td>
                            <td className="py-4 px-6 border-b">{user?.email}</td>
                            <td className="py-4 px-6 border-b">
-                              {user?.role == "admin"
+                              {user?.role === "admin"
                                  ? "Admin"
-                                 : user?.role == "instructor"
+                                 : user?.role === "instructor"
                                  ? "Instructor"
                                  : "Student"}
                            </td>
 
                            <td className="py-4 px-6 border-b">
                               <button
-                                 onClick={() => {
-                                    makeInstructor(user._id);
-                                 }}
-                                 className="btn btn-accent btn-xs ">
+                                 onClick={() => makeInstructor(user._id)}
+                                 className="btn btn-accent btn-xs"
+                                 disabled={user?.role === "instructor"}>
                                  instructor
                               </button>
                               <button
-                                 onClick={() => {
-                                    makeAdmin(user._id);
-                                 }}
-                                 className="btn ml-2 btn-secondary btn-xs">
+                                 onClick={() => makeAdmin(user._id)}
+                                 className="btn ml-2 btn-secondary btn-xs"
+                                 disabled={user?.role === "admin"}>
                                  Admin
                               </button>
                            </td>
