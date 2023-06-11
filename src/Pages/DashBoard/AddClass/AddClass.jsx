@@ -38,12 +38,12 @@ const AddClass = () => {
          });
 
       const course = {
-         instructorName,
-         email,
-         className,
+         instructor_name: instructorName,
+         instructor_email: email,
+         name: className,
          price,
-         availableSeats,
-         photo: image,
+         seats: availableSeats,
+         image,
          status: "pending",
       };
 
