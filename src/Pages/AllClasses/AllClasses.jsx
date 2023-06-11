@@ -3,17 +3,11 @@ import AllClassesCard from "./AllClassesCard/AllClassesCard";
 import { authContext } from "../../Providers/AuthProvider";
 import classesImage from "../../assets/banner/banner.jpg";
 import Cover from "../../Components/Cover/Cover";
+import useAllClasses from "../../Hook/useAllClasses";
 
 const AllClasses = () => {
    const { loader } = useContext(authContext);
-   const [classes, setClasses] = useState([]);
-   useEffect(() => {
-      fetch("http://localhost:5000/classes")
-         .then((res) => res.json())
-         .then((data) => {
-            setClasses(data);
-         });
-   }, []);
+   const [classes] = useAllClasses();
 
    return (
       <div>

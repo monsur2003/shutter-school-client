@@ -4,12 +4,11 @@ import { toast } from "react-hot-toast";
 import Title from "../../../../Components/Title/Title";
 
 const ManageUsers = () => {
-   const queryClient = useQueryClient();
-
    const { data: users = [], refetch } = useQuery(["users"], async () => {
-      const res = await fetch("http://localhost:5000/users", {});
+      const res = await fetch("http://localhost:5000/users");
       return res.json();
    });
+   console.log(users);
 
    const makeAdminMutation = useMutation(
       (id) =>
@@ -46,10 +45,8 @@ const ManageUsers = () => {
    };
 
    return (
-      <div>
-         <Title subHeading={"Manage users from here"}></Title>
-
-         <div className="-mt-8">
+      <div className="my-5">
+         <div className="">
             <div className="overflow-x-auto border-2 border-blue-800 shadow-xl rounded-xl p-8 table-zebra">
                <h3 className="text-3xl font-bold text-center mb-2">
                   Total users {users.length}
