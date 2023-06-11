@@ -4,6 +4,7 @@ import { authContext } from "../../Providers/AuthProvider";
 import image1 from "../../assets/authentication/register.png";
 import { Link, useNavigate } from "react-router-dom";
 import Title from "../../Components/Title/Title";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
    const { createUser, updateName, googleLogin } = useContext(authContext);
    const navigate = useNavigate();
@@ -111,6 +112,9 @@ const Register = () => {
 
    return (
       <>
+         <Helmet>
+            <title>Shutter | Register page</title>
+         </Helmet>
          <Title
             heading={"Please Register"}
             subHeading={"Register for explore about our school"}></Title>

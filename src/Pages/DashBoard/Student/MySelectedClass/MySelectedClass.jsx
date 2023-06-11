@@ -2,6 +2,7 @@ import axios from "axios";
 import Title from "../../../../Components/Title/Title";
 import useClass from "../../../../Hook/useClass";
 import SelectedCard from "./SelectedCard";
+import { Helmet } from "react-helmet-async";
 
 const MySelectedClass = () => {
    const [myClasses, refetch] = useClass();
@@ -35,6 +36,9 @@ const MySelectedClass = () => {
 
    return (
       <div>
+         <Helmet>
+            <title>Shutter | selected class</title>
+         </Helmet>
          <div className=" flex justify-center items-center flex-col">
             {myClasses.map((singleClass) => (
                <SelectedCard

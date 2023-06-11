@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { authContext } from "../../../Providers/AuthProvider";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
    const { user } = useContext(authContext);
@@ -65,6 +66,9 @@ const AddClass = () => {
 
    return (
       <>
+         <Helmet>
+            <title>Shutter | add class</title>
+         </Helmet>
          <form
             onSubmit={handleAdd}
             className="border-2 w-[80%] mx-auto bordergray-300 p-6 rounded-2xl shadow-2xl">

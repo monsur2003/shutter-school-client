@@ -6,14 +6,23 @@ import Footer from "../shared/Footer/Footer";
 import useAdmin from "../Hook/useAdmin";
 import { HiUsers } from "react-icons/hi";
 
-import { authContext } from "../Providers/AuthProvider";
+import AuthProvider, { authContext } from "../Providers/AuthProvider";
 import useIns from "../Hook/useIns";
 import ActiveLink from "../Components/ActiveLink/ActiveLink";
-import { FaHome, FaShoppingBag, FaUserAlt } from "react-icons/fa";
+import {
+   FaBook,
+   FaHistory,
+   FaHome,
+   FaShoppingBag,
+   FaUser,
+   FaUserAlt,
+   FaWallet,
+} from "react-icons/fa";
 
 const DashBoard = () => {
    const isAdmin = useAdmin();
    const isInstructor = useIns();
+   const { user } = useContext(authContext);
 
    console.log(isAdmin, isInstructor);
    return (
@@ -35,25 +44,27 @@ const DashBoard = () => {
                      {isAdmin[0] ? (
                         <>
                            <ActiveLink to="dashboard/manageclass">
-                              <span className="font-semibold btn btn-wide ">
-                                 Manage class
+                              <span className="font-semibold btn-ghost btn btn-block ">
+                                 <FaBook></FaBook> Manage class
                               </span>
                            </ActiveLink>{" "}
-                           <br />
-                           <br />
                            <ActiveLink to="dashboard/manageuser">
-                              <span className="font-semibold">
-                                 Manage users
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 <HiUsers></HiUsers> Manage users
                               </span>
                            </ActiveLink>
                         </>
                      ) : isInstructor[0] ? (
                         <>
                            <ActiveLink to="dashboard/addclass">
-                              <span className="">Add Class</span>
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 Add Class
+                              </span>
                            </ActiveLink>
                            <ActiveLink className="my-3" to="dashboard/myclass">
-                              <span className="">My Class</span>
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 My Class
+                              </span>
                            </ActiveLink>
                         </>
                      ) : (
@@ -61,15 +72,21 @@ const DashBoard = () => {
                            <ActiveLink
                               className=""
                               to="dashboard/selectedclass">
-                              <span className="">My selected class</span>
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 <FaBook></FaBook> My selected class
+                              </span>
                            </ActiveLink>
                            <ActiveLink
                               className="mt-4"
                               to="dashboard/enrolledclass">
-                              <span className="">My enrolled class</span>
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 <FaWallet></FaWallet> My enrolled class
+                              </span>
                            </ActiveLink>
                            <ActiveLink className="" to="dashboard/mypayment">
-                              <span className="">My payment</span>
+                              <span className="font-semibold btn-ghost btn btn-block">
+                                 <FaHistory></FaHistory> My payment History
+                              </span>
                            </ActiveLink>
                         </>
                      )}
@@ -77,23 +94,17 @@ const DashBoard = () => {
                      <div className="divider"></div>
                      <Link>
                         <button className="btn btn-ghost w-full">
-                           <FaHome className="mr-[6px]"></FaHome> Home
+                           <FaHome className=""></FaHome> Home
                         </button>
                      </Link>
-                     <Link>
+                     <Link to="/instructor">
                         <button className="btn btn-ghost w-full">
-                           <FaShoppingBag className="mr-[6px]"></FaShoppingBag>{" "}
-                           Instructor
-                        </button>
-                     </Link>
-                     <Link to="/">
-                        <button className="btn btn-ghost w-full">
-                           <FaHome className="mr-[6px]"></FaHome> Home
+                           <FaUser></FaUser> Instructor
                         </button>
                      </Link>
                   </div>
                </div>
-               <div className="w-[70%] mx-auto">
+               <div className="w-[75%] mx-auto">
                   <Outlet></Outlet>
                </div>
             </div>

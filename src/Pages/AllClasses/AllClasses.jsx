@@ -5,6 +5,7 @@ import classesImage from "../../assets/banner/banner.jpg";
 import Cover from "../../Components/Cover/Cover";
 import useAllClasses from "../../Hook/useAllClasses";
 import Title from "../../Components/Title/Title";
+import { Helmet } from "react-helmet-async";
 
 const AllClasses = () => {
    const { loader } = useContext(authContext);
@@ -15,6 +16,9 @@ const AllClasses = () => {
    return (
       <div>
          <div>
+            <Helmet>
+               <title>Shutter | AllClasses</title>
+            </Helmet>
             <Cover
                image={classesImage}
                heading={"Featured Classes for You"}

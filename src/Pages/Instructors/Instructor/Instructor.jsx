@@ -6,6 +6,7 @@ import coverImage from "../../../assets/banner/cover.jpg";
 
 import useInstructor from "../../../Hook/useInstructor";
 import Cover from "../../../Components/Cover/Cover";
+import { Helmet } from "react-helmet-async";
 
 const Instructor = () => {
    const [users, loader] = useInstructor();
@@ -22,6 +23,9 @@ const Instructor = () => {
    return (
       <div>
          <div>
+            <Helmet>
+               <title>Shutter | Instructor page</title>
+            </Helmet>
             <Cover
                image={coverImage}
                heading={"Meet our senior instructor"}

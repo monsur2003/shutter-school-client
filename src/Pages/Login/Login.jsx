@@ -6,6 +6,7 @@ import { authContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import Title from "../../Components/Title/Title";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
    const { googleLogin, signIn } = useContext(authContext);
@@ -77,6 +78,9 @@ const Login = () => {
 
    return (
       <div className="mx-auto mt-8 mb-10 px-4 sm:px-6 lg:px-8 bg-gray-100">
+         <Helmet>
+            <title>Shutter | Login page</title>
+         </Helmet>
          <Title
             heading={"Please Login"}
             subHeading={"Login for explore about our school"}></Title>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAllClasses from "../../../../Hook/useAllClasses";
 import Title from "../../../../Components/Title/Title";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const ManageClass = () => {
    const [classes, refetch] = useAllClasses();
@@ -71,6 +72,9 @@ const ManageClass = () => {
 
    return (
       <div className="my-4">
+         <Helmet>
+            <title>Shutter | Manage class</title>
+         </Helmet>
          <div className="overflow-x-auto border-2 rounded-lg p-6 border-gray-600">
             <h2 className="text-center text-3xl mb-2 font-bold text-gray-700">
                Total class: {classes.length}

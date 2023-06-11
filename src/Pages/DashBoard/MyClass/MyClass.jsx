@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useMyClasses from "../../../Hook/useMyClasses";
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const MyClass = () => {
    const [myClasses, refetch] = useMyClasses();
@@ -70,7 +71,9 @@ const MyClass = () => {
    return (
       <div>
          <h2>Here is my classes page {myClasses.length}</h2>
-
+         <Helmet>
+            <title>Shutter | my class</title>
+         </Helmet>
          <div>
             <table className="table">
                <thead className="bg-blue-500">

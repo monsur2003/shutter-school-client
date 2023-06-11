@@ -1,7 +1,4 @@
 .active {
-   border: 3px solid blue;
-   padding: 8px;
-   border-radius: 8px;
-   background-color: rgb(153, 152, 152);
+   color: blue;
    width: full;
 }

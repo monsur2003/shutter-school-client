@@ -3,6 +3,7 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import Title from "../../../../Components/Title/Title";
 import useUsers from "../../../../Hook/useUsers";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
    const [users, refetch] = useUsers();
@@ -43,6 +44,9 @@ const ManageUsers = () => {
 
    return (
       <div className="my-5">
+         <Helmet>
+            <title>Shutter | manage users</title>
+         </Helmet>
          <div className="">
             <div className="overflow-x-auto border-2 border-blue-800 shadow-xl rounded-xl p-8 table-zebra">
                <h3 className="text-3xl font-bold text-center mb-2">
