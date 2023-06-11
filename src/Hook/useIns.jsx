@@ -12,7 +12,7 @@ const useIns = () => {
       enabled: !!user?.email,
       queryFn: async () => {
          const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
-         console.log("isInst", res.data.instructor);
+         // console.log("isInst", res.data.instructor);
          return res.data.instructor;
       },
    });

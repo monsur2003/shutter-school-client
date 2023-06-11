@@ -17,7 +17,9 @@ const useClass = () => {
       queryKey: ["classes", user?.email],
       enabled: !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
-         const res = await axiosSecure(`/selectedClasses?email=${user?.email}`);
+         const res = await axiosSecure.get(
+            `/selectedClasses?email=${user?.email}`
+         );
          console.log("axiosSecure", res);
          return res.data;
       },

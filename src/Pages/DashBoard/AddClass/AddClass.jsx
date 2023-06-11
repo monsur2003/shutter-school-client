@@ -1,9 +1,12 @@
 import React, { useContext, useState } from "react";
 import { authContext } from "../../../Providers/AuthProvider";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { toast } from "react-hot-toast";
 
 const AddClass = () => {
    const { user } = useContext(authContext);
    const [image, setImage] = useState(null);
+   const [axiosSecure] = useAxiosSecure();
    const handleAdd = (event) => {
       event.preventDefault();
       const form = event.target;
@@ -43,6 +46,21 @@ const AddClass = () => {
          photo: image,
          status: "pending",
       };
+
+      fetch("http://localhost:5000/classes", {
+         method: "POST",
+         headers: {
+            "content-type": "application/json",
+         },
+         body: JSON.stringify(course),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            if (data.insertedId) {
+               toast("classAdded successfully");
+               form.reset();
+            }
+         });
    };
 
    return (

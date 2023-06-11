@@ -11,9 +11,9 @@ import useIns from "../Hook/useIns";
 const DashBoard = () => {
    const { user, loader } = useContext(authContext);
 
-   const isAdmin = useAdmin();
-   const isInstructor = useIns();
-   console.log({ isAdmin });
+   const isAdmin = false;
+   const isInstructor = true;
+   // console.log(isAdmin, isInstructor);
 
    return (
       <>
