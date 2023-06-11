@@ -2,13 +2,10 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { toast } from "react-hot-toast";
 import Title from "../../../../Components/Title/Title";
+import useUsers from "../../../../Hook/useUsers";
 
 const ManageUsers = () => {
-   const { data: users = [], refetch } = useQuery(["users"], async () => {
-      const res = await fetch("http://localhost:5000/users");
-      return res.json();
-   });
-   console.log(users);
+   const [users, refetch] = useUsers();
 
    const makeAdminMutation = useMutation(
       (id) =>

@@ -3,9 +3,12 @@ import { authContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import { useNavigate } from "react-router-dom";
+import useUsers from "../../../Hook/useUsers";
 
 const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const { user } = useContext(authContext);
+   const [users, refetch] = useUsers();
+   console.log(users);
    const { name, image, instructor_name, price } = singleClass;
 
    const [buttonDisabled, setButtonDisabled] = useState(
@@ -99,7 +102,10 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
             </div>
             <button
                onClick={handleSelect}
-               disabled={buttonDisabled}
+               disabled={
+                  (`${users.role === "admin" || users.role === "instructor"}`,
+                  buttonDisabled)
+               }
                className="btn btn-accent rounded-t-none">
                Select Class
             </button>

@@ -27,7 +27,7 @@ const Navbar = () => {
          </li>
 
          <li>
-            <ActiveLink to="/dashboard">Dashboard</ActiveLink>
+            {user ? <ActiveLink to="/dashboard">Dashboard</ActiveLink> : ""}
          </li>
       </>
    );
