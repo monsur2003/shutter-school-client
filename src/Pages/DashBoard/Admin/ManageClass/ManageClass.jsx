@@ -75,7 +75,7 @@ const ManageClass = () => {
          <Helmet>
             <title>Shutter | Manage class</title>
          </Helmet>
-         <div className="overflow-x-auto border-2 rounded-lg p-6 border-gray-600">
+         <div className="overflow-x-auto w-[88%] mx-auto border-2 rounded-lg p-6 border-gray-600">
             <h2 className="text-center text-3xl mb-2 font-bold text-gray-700">
                Total class: {classes.length}
             </h2>

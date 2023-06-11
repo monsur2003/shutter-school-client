@@ -48,11 +48,11 @@ const ManageUsers = () => {
             <title>Shutter | manage users</title>
          </Helmet>
          <div className="">
-            <div className="overflow-x-auto border-2 border-blue-800 shadow-xl rounded-xl p-8 table-zebra">
+            <div className="overflow-x-auto w-[88%]  mx-auto border-2 border-blue-800 shadow-xl rounded-xl p-8 table-zebra">
                <h3 className="text-3xl font-bold text-center mb-2">
                   Total users {users.length}
                </h3>
-               <table className="min-w-full bg-white border border-gray-300">
+               <table className=" w-full bg-white border border-gray-300">
                   <thead>
                      <tr>
                         <th className="py-3 px-6 font-semibold uppercase border-b">

@@ -26,7 +26,7 @@ const PopularClass = () => {
                heading={"popular classes"}
                subHeading={"Discover the Most Enrolled Courses"}></Title>
          </div>
-         <div className="md:w-[90%]  mx-auto  grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+         <div className="w-[90%] mx-auto  grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {popularClass.map((popular, index) => (
                <PopularClassCard
                   key={index}
