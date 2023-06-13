@@ -1,5 +1,6 @@
 import React from "react";
 import { FaApplePay, FaTrash, FaWallet } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SelectedCard = ({ singleClass, handleDelete }) => {
    return (
@@ -32,9 +33,11 @@ const SelectedCard = ({ singleClass, handleDelete }) => {
                      <FaTrash className="text-[20px]"></FaTrash>
                   </button>
                   <br />
-                  <button className="btn my-2 btn-secondary btn-square">
-                     <FaWallet className="text-[20px]"></FaWallet>
-                  </button>
+                  <Link to={`/dashboard/payment/${singleClass._id}`}>
+                     <button className="btn my-2 btn-secondary btn-square">
+                        <FaWallet className="text-[20px]"></FaWallet>
+                     </button>
+                  </Link>
                </div>
             </div>
          </div>

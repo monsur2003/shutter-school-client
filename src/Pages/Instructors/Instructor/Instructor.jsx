@@ -32,14 +32,12 @@ const Instructor = () => {
                title={
                   "Lead instructors are responsible for leading specific classes or programs. They possess a deep understanding of the subject matter and excel in delivering engaging and"
                }></Cover>
-
-            <h3>Helllo</h3>
          </div>
          <Title
             heading={"All Instructor list"}
             subHeading={"Meet Our Experienced Instructors"}></Title>
 
-         <div className="w-[80%] mx-auto mb-6  grid md:grid-cols-2 gap-4">
+         <div className="w-[90%] mx-auto mb-6  grid md:grid-cols-2 gap-4">
             {users.map((user) => (
                <InstructorCard
                   key={user._id}

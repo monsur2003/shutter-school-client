@@ -70,19 +70,22 @@ const MyClass = () => {
 
    return (
       <div>
-         <h2>Here is my classes page {myClasses.length}</h2>
          <Helmet>
             <title>Shutter | my class</title>
          </Helmet>
-         <div>
-            <table className="table">
+         <div className="w-[88%] mx-auto border-2 border-blue-700 p-6 my-4 shadow-xl rounded-xl">
+            <h2 className="text-center text-3xl font-semibold mb-3">
+               Your Total class: {myClasses.length}
+            </h2>
+            <table className="table border-2 rounded-lg">
                <thead className="bg-blue-500">
-                  <tr>
+                  <tr className="text-black font-semibold">
                      <th>#</th>
                      <th>Photo</th>
                      <th>Name</th>
                      <th>Status</th>
                      <th>Feedback</th>
+                     <th>Enrolled</th>
                      <th>Action</th>
                   </tr>
                </thead>
@@ -120,7 +123,12 @@ const MyClass = () => {
                               ? "Denied"
                               : singleClass.status}
                         </td>
-                        <td>{singleClass.feedback}</td>
+                        <td>
+                           {singleClass.feedback
+                              ? singleClass.feedback
+                              : "Not found"}
+                        </td>
+                        <td>{singleClass.enrolled}</td>
                         <td>
                            <button
                               onClick={() =>

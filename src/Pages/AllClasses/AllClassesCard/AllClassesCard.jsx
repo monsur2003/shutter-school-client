@@ -4,12 +4,17 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import { useNavigate } from "react-router-dom";
 import useUsers from "../../../Hook/useUsers";
+import useAdmin from "../../../Hook/useAdmin";
+import useIns from "../../../Hook/useIns";
 
 const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const { user } = useContext(authContext);
    const [users, refetch] = useUsers();
+   const isAdmin = useAdmin();
+   const isInstructor = useIns();
+
    console.log(users);
-   const { name, image, instructor_name, price } = singleClass;
+   const { name, image, instructor_name, price, _id } = singleClass;
 
    const [buttonDisabled, setButtonDisabled] = useState(
       singleClass.seats === 0
@@ -19,6 +24,7 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const handleSelect = () => {
       if (user && user.email) {
          const selectClass = {
+            selectedId: _id,
             name,
             image,
             instructor_name,
@@ -43,11 +49,6 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
                      showConfirmButton: false,
                      timer: 1500,
                   });
-                  // Decrease the seat value
-                  setSingleClass((prevClass) => ({
-                     ...prevClass,
-                     seats: prevClass.seats - 1,
-                  }));
                }
             });
       } else {
@@ -69,7 +70,7 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const cardClassName =
       singleClass.seats === 0
          ? "card w-[350px] gap-x-4 shadow-xl bg-red-500"
-         : "card w-[350px] gap-x-4 shadow-xl";
+         : "card w-[350px] gap-x-4 shadow-xl bg-white";
 
    return (
       <div>
@@ -102,10 +103,7 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
             </div>
             <button
                onClick={handleSelect}
-               disabled={
-                  (`${users.role === "admin" || users.role === "instructor"}`,
-                  buttonDisabled)
-               }
+               disabled={user && (isAdmin[0] || isInstructor[0])}
                className="btn btn-accent rounded-t-none">
                Select Class
             </button>

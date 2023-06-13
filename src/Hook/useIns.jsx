@@ -9,10 +9,10 @@ const useIns = () => {
 
    const { data: isInstructor, isLoading: instructorLoading } = useQuery({
       queryKey: ["isInstructor", "instructor", user?.email],
-      enabled: !!user?.email,
+      enabled: !!user?.email && !!localStorage.getItem("access-token"),
       queryFn: async () => {
          const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
-         // console.log("isInst", res.data.instructor);
+
          return res.data.instructor;
       },
    });

@@ -1,8 +1,9 @@
 import React from "react";
+import { Fade } from "react-reveal";
 
 const Footer = () => {
    return (
-      <div>
+      <Fade bottom cascade>
          <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="bg-[#1F2937] text-white">
                <div className="p-6 text-center">
@@ -28,7 +29,7 @@ const Footer = () => {
                Copyright © CulinaryCloud. All rights reserved.
             </p>
          </div>
-      </div>
+      </Fade>
    );
 };
 

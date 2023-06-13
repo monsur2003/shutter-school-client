@@ -14,8 +14,8 @@ const useClass = () => {
       refetch,
       data: myClasses = [],
    } = useQuery({
-      queryKey: ["classes", user?.email],
-      enabled: !!user?.email && !!localStorage.getItem("access-token"),
+      queryKey: ["selectedClasses", user?.email],
+
       queryFn: async () => {
          const res = await axiosSecure.get(
             `/selectedClasses?email=${user?.email}`

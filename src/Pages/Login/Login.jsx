@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginImage from "../../assets/authentication/login.png";
 import { authContext } from "../../Providers/AuthProvider";
@@ -9,8 +9,11 @@ import { toast } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
+   let navigate = useNavigate();
+   let location = useLocation();
+   const from = location.state?.from?.pathname || "/";
    const { googleLogin, signIn } = useContext(authContext);
-   const navigate = useNavigate();
+
    const [showPassword, setShowPassword] = useState(false);
 
    const handleTogglePassword = () => {
@@ -22,7 +25,6 @@ const Login = () => {
          .then((result) => {
             const loggedInUser = result.user;
 
-            navigate("/");
             const saveUser = {
                name: loggedInUser.displayName,
                email: loggedInUser.email,
@@ -48,6 +50,7 @@ const Login = () => {
                         timer: 1500,
                      });
                   }
+                  navigate(from, { replace: true });
                });
          })
          .catch((error) => {
@@ -69,7 +72,7 @@ const Login = () => {
                showConfirmButton: false,
                timer: 1500,
             });
-            navigate("/");
+            navigate(from, { replace: true });
          })
          .catch((err) => {
             console.log(err);

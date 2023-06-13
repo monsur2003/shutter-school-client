@@ -2,6 +2,7 @@ import React from "react";
 import "./About.css";
 import image from "../../../assets/banner/about.jpg";
 import Title from "../../../Components/Title/Title";
+import Fade from "react-reveal/Fade";
 
 const About = () => {
    return (
@@ -9,31 +10,41 @@ const About = () => {
          <Title
             heading={"about us"}
             subHeading={"You know about our projects"}></Title>
-         <div className="about flex md:justify-center  md:items-center  ">
-            <div className="md:flex md:w-[90%] ">
-               <div>
-                  <img className="md:w-[90%] rounded-lg" src={image} alt="" />
-               </div>
-               <div className=" text-center mt-8 md:mt-2 md:text-start">
-                  <h1 className="md:text-5xl text-3xl my-4 font-bold uppercase">
-                     ABout us
-                  </h1>
-                  <p>
-                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                     Enim quasi expedita at maxime tempora repudiandae, illo
-                     quia repellat qui nihil amet dignissimos, <br /> magni eius
-                     natus quae eum, quibusdam minus? Magnam, quaerat! Quo
-                     consectetur aliquam, consequuntur magni molestiae aliquid?
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
-                     <br />
-                     Praesentium provident aut libero maiores at accusantium
-                     voluptas corporis tempora asperiores eos voluptatum enim
-                     quidem doloremque dolores, error numquam illo odit, magni
-                     neque delectus sapiente! A eius esse dolor amet animi id.
-                  </p>
+         <div className="about flex flex-col md:flex-row md:justify-center  md:items-center  ">
+            <div className="flex flex-col md:flex-row md:w-[90%] ">
+               <Fade left duration={1500}>
+                  <div>
+                     <img
+                        className="md:w-[90%]  rounded-lg"
+                        src={image}
+                        alt=""
+                     />
+                  </div>
+               </Fade>
+               <Fade right cascade duration={1500}>
+                  <div className=" text-center mt-8 md:mt-2 md:text-start">
+                     <h1 className="md:text-5xl text-3xl my-4 font-bold uppercase">
+                        Exploring the World of Photography
+                     </h1>
+                     <p>
+                        We pride ourselves on our attention to detail,
+                        meticulous composition, and the ability to connect with
+                        our clients on a personal level. Understanding your
+                        vision and desires <br />
+                        allows us to tailor our approach, ensuring that each
+                        photograph reflects your unique story. We believe that{" "}
+                        <br />
+                        collaboration is key, and we work closely with our
+                        clients to bring their vision to life. Lorem ipsum dolor
+                        sit, amet consectetur adipisicing elit. Doloremque
+                        expedita esse <br />
+                     </p>
 
-                  <button className="btn btn-primary my-5">Learn More</button>
-               </div>
+                     <button className="btn btn-primary my-5">
+                        Learn More
+                     </button>
+                  </div>
+               </Fade>
             </div>
          </div>
       </div>

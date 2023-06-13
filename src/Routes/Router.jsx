@@ -14,10 +14,12 @@ import ManageClass from "../Pages/DashBoard/Admin/ManageClass/ManageClass";
 import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers/ManageUsers";
 import MySelectedClass from "../Pages/DashBoard/Student/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/DashBoard/Student/MyEnrolledClass/MyEnrolledClass";
-import MyPayment from "../Pages/DashBoard/Student/MyPayment/MyPayment";
 import Instructor from "../Pages/Instructors/Instructor/Instructor";
 import PrivateRoute from "./PrivateRoute";
 import DashBoardHome from "../Pages/DashBoard/DashBoardHome/DashBoardHome";
+import MyPayment from "../Pages/DashBoard/Student/MyPayment/MyPayment";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
    {
@@ -63,31 +65,48 @@ const router = createBrowserRouter([
             element: <DashBoardHome></DashBoardHome>,
          },
          {
-            path: "dashboard/addclass",
-            element: <AddClass></AddClass>,
+            path: "addclass",
+            element: (
+               <InstructorRoute>
+                  <AddClass></AddClass>
+               </InstructorRoute>
+            ),
          },
          {
-            path: "dashboard/myclass",
-            element: <MyClass></MyClass>,
+            path: "myclass",
+            element: (
+               <InstructorRoute>
+                  <MyClass></MyClass>
+               </InstructorRoute>
+            ),
          },
          {
-            path: "dashboard/manageclass",
-            element: <ManageClass></ManageClass>,
+            path: "manageclass",
+            element: (
+               <AdminRoute>
+                  <ManageClass></ManageClass>
+               </AdminRoute>
+            ),
          },
          {
-            path: "dashboard/manageuser",
-            element: <ManageUsers></ManageUsers>,
+            path: "manageuser",
+            element: (
+               <AdminRoute>
+                  <ManageUsers></ManageUsers>
+               </AdminRoute>
+            ),
          },
          {
-            path: "dashboard/selectedclass",
+            path: "selectedclass",
             element: <MySelectedClass></MySelectedClass>,
          },
+
          {
-            path: "dashboard/enrolledclass",
+            path: "enrolledclass",
             element: <MyEnrolledClass></MyEnrolledClass>,
          },
          {
-            path: "dashboard/mypayment",
+            path: "payment/:id",
             element: <MyPayment></MyPayment>,
          },
       ],

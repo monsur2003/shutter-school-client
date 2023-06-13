@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
    const { user } = useContext(authContext);
-   const [image, setImage] = useState(null);
+
    const [axiosSecure] = useAxiosSecure();
    const handleAdd = (event) => {
       event.preventDefault();
@@ -31,36 +31,34 @@ const AddClass = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            setImage(data.data.display_url);
-            console.log(data);
+            const course = {
+               instructor_name: instructorName,
+               instructor_email: email,
+               name: className,
+               price: parseFloat(price),
+               seats: availableSeats,
+               image: data.data.display_url,
+               status: "pending",
+               enrolled: 0,
+            };
+
+            fetch("http://localhost:5000/classes", {
+               method: "POST",
+               headers: {
+                  "content-type": "application/json",
+               },
+               body: JSON.stringify(course),
+            })
+               .then((res) => res.json())
+               .then((data) => {
+                  if (data.insertedId) {
+                     toast("classAdded successfully");
+                     form.reset();
+                  }
+               });
          })
          .catch((err) => {
             console.log(err);
-         });
-
-      const course = {
-         instructor_name: instructorName,
-         instructor_email: email,
-         name: className,
-         price,
-         seats: availableSeats,
-         image,
-         status: "pending",
-      };
-
-      fetch("http://localhost:5000/classes", {
-         method: "POST",
-         headers: {
-            "content-type": "application/json",
-         },
-         body: JSON.stringify(course),
-      })
-         .then((res) => res.json())
-         .then((data) => {
-            if (data.insertedId) {
-               toast("classAdded successfully");
-               form.reset();
-            }
          });
    };
 
