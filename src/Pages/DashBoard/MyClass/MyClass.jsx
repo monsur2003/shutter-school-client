@@ -8,6 +8,8 @@ const MyClass = () => {
    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
    const [selectedClassId, setSelectedClassId] = useState("");
 
+   const sortedClasses = myClasses.sort((a, b) => b.enrolled - a.enrolled);
+
    const handleOpenFeedbackModal = (id) => {
       setSelectedClassId(id);
       setIsFeedbackModalOpen(true);
@@ -46,13 +48,16 @@ const MyClass = () => {
                image: data.data.display_url,
             };
             console.log(updateDoc);
-            fetch(`http://localhost:5000/classes/${classId}`, {
-               method: "PUT",
-               headers: {
-                  "Content-Type": "application/json",
-               },
-               body: JSON.stringify(updateDoc),
-            })
+            fetch(
+               `https://shutter-school-server-monsur776.vercel.app/classes/${classId}`,
+               {
+                  method: "PUT",
+                  headers: {
+                     "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(updateDoc),
+               }
+            )
                .then((res) => res.json())
                .then((data) => {
                   console.log(data);
@@ -90,7 +95,7 @@ const MyClass = () => {
                   </tr>
                </thead>
                <tbody>
-                  {myClasses.map((singleClass, index) => (
+                  {sortedClasses.map((singleClass, index) => (
                      <tr
                         key={singleClass._id}
                         className="border-b-2 border-gray-400">

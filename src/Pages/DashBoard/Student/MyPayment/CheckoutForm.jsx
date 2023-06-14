@@ -70,7 +70,7 @@ const CheckoutForm = ({ selectedItem }) => {
 
       console.log("payment intent", paymentIntent);
       setProcessing(false);
-      if (paymentIntent.status === "succeeded") {
+      if (paymentIntent?.status === "succeeded") {
          setTransactionId(paymentIntent.id);
          // save payment information to the server
          const payment = {
@@ -79,6 +79,8 @@ const CheckoutForm = ({ selectedItem }) => {
             price: selectedItem?.price,
             date: new Date(),
             selectedId: selectedItem?._id,
+            enrolledId: selectedItem?.classId,
+
             status: "service pending",
          };
          axiosSecure.post("/payments", payment).then((res) => {

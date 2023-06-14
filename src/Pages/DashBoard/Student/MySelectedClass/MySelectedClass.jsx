@@ -17,9 +17,12 @@ const MySelectedClass = () => {
          cancelButtonColor: "#d33",
          confirmButtonText: "Yes, delete it!",
       }).then((result) => {
-         fetch(`http://localhost:5000/selectedClass/${id}`, {
-            method: "delete",
-         })
+         fetch(
+            `https://shutter-school-server-monsur776.vercel.app/selectedClass/${id}`,
+            {
+               method: "delete",
+            }
+         )
             .then((res) => res.json())
             .then((data) => {
                if (data.deletedCount > 0) {

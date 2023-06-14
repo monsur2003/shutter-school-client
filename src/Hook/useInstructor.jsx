@@ -6,7 +6,7 @@ const useInstructor = () => {
    const token = localStorage.getItem("access-token");
 
    useEffect(() => {
-      fetch("http://localhost:5000/users", {
+      fetch("https://shutter-school-server-monsur776.vercel.app/users", {
          headers: {
             Authorization: `Bearer ${token}`,
          },

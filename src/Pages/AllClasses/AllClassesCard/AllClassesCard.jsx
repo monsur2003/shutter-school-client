@@ -14,30 +14,33 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
    const isInstructor = useIns();
 
    console.log(users);
-   const { name, image, instructor_name, price, _id } = singleClass;
+   const { name, image, instructor_name, price } = singleClass;
 
    const [buttonDisabled, setButtonDisabled] = useState(
       singleClass.seats === 0
    );
    const navigate = useNavigate();
 
-   const handleSelect = () => {
+   const handleSelect = (id) => {
       if (user && user.email) {
          const selectClass = {
-            selectedId: _id,
+            classId: id,
             name,
             image,
             instructor_name,
             price,
             email: user?.email,
          };
-         fetch("http://localhost:5000/selectedClasses", {
-            method: "POST",
-            headers: {
-               "content-type": "application/json",
-            },
-            body: JSON.stringify(selectClass),
-         })
+         fetch(
+            "https://shutter-school-server-monsur776.vercel.app/selectedClasses",
+            {
+               method: "POST",
+               headers: {
+                  "content-type": "application/json",
+               },
+               body: JSON.stringify(selectClass),
+            }
+         )
             .then((res) => res.json())
             .then((data) => {
                if (data.insertedId) {
@@ -102,7 +105,7 @@ const AllClassesCard = ({ singleClass, title, setSingleClass }) => {
                </p>
             </div>
             <button
-               onClick={handleSelect}
+               onClick={() => handleSelect(singleClass._id)}
                disabled={user && (isAdmin[0] || isInstructor[0])}
                className="btn btn-accent rounded-t-none">
                Select Class

@@ -42,13 +42,16 @@ const AddClass = () => {
                enrolled: 0,
             };
 
-            fetch("http://localhost:5000/classes", {
-               method: "POST",
-               headers: {
-                  "content-type": "application/json",
-               },
-               body: JSON.stringify(course),
-            })
+            fetch(
+               "https://shutter-school-server-monsur776.vercel.app/classes",
+               {
+                  method: "POST",
+                  headers: {
+                     "content-type": "application/json",
+                  },
+                  body: JSON.stringify(course),
+               }
+            )
                .then((res) => res.json())
                .then((data) => {
                   if (data.insertedId) {

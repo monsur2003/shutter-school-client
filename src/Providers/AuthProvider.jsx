@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
 
          if (currentUser) {
             axios
-               .post("http://localhost:5000/jwt", {
+               .post("https://shutter-school-server-monsur776.vercel.app/jwt", {
                   email: currentUser.email,
                })
                .then((data) => {

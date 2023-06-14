@@ -10,9 +10,12 @@ const ManageUsers = () => {
 
    const makeAdminMutation = useMutation(
       (id) =>
-         fetch(`http://localhost:5000/users/admin/${id}`, {
-            method: "PATCH",
-         }).then((res) => res.json()),
+         fetch(
+            `https://shutter-school-server-monsur776.vercel.app/users/admin/${id}`,
+            {
+               method: "PATCH",
+            }
+         ).then((res) => res.json()),
       {
          onSuccess: () => {
             refetch();
@@ -23,9 +26,12 @@ const ManageUsers = () => {
 
    const makeInstructorMutation = useMutation(
       (id) =>
-         fetch(`http://localhost:5000/users/instructor/${id}`, {
-            method: "PATCH",
-         }).then((res) => res.json()),
+         fetch(
+            `https://shutter-school-server-monsur776.vercel.app/users/instructor/${id}`,
+            {
+               method: "PATCH",
+            }
+         ).then((res) => res.json()),
       {
          onSuccess: () => {
             refetch();

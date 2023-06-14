@@ -8,7 +8,7 @@ const useMyClasses = () => {
       ["myClasses", user?.email],
       async () => {
          const res = await fetch(
-            `http://localhost:5000/myClasses?email=${user?.email}`
+            `https://shutter-school-server-monsur776.vercel.app/myClasses?email=${user?.email}`
          );
          return res.json();
       }

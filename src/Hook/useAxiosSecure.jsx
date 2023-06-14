@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
    const navigate = useNavigate();
 
    const axiosSecure = axios.create({
-      baseURL: "http://localhost:5000",
+      baseURL: "https://shutter-school-server-monsur776.vercel.app",
    });
    useEffect(() => {
       axiosSecure.interceptors.request.use((config) => {

@@ -9,7 +9,7 @@ const PopularClass = () => {
    console.log(popularClass);
 
    useEffect(() => {
-      fetch("http://localhost:5000/classes")
+      fetch("https://shutter-school-server-monsur776.vercel.app/classes")
          .then((res) => res.json())
          .then((data) => {
             const approvedClass = data.filter((d) => d.status == "approved");

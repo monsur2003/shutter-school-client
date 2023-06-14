@@ -8,8 +8,8 @@ import { Helmet } from "react-helmet-async";
 const Register = () => {
    const { createUser, updateName, googleLogin } = useContext(authContext);
    const navigate = useNavigate();
-   const [photo, setPhoto] = useState(null);
-   console.log(photo);
+   // const [photo, setPhoto] = useState(null);
+
    const {
       register,
       handleSubmit,
@@ -27,7 +27,7 @@ const Register = () => {
                photoUrl: loggedInUser.photoURL,
                role: "student",
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://shutter-school-server-monsur776.vercel.app/users", {
                method: "POST",
                headers: {
                   "content-type": "application/json",
@@ -66,48 +66,50 @@ const Register = () => {
          body: formData,
       })
          .then((res) => res.json())
-         .then((data) => {
-            setPhoto(data.data.display_url);
+         .then((imageFromImgbb) => {
+            let photo = imageFromImgbb.data.display_url;
+            createUser(data?.email, data?.password)
+               .then((result) => {
+                  const createdUser = result.user;
+                  updateName(data?.name, photo);
+
+                  const saveUser = {
+                     email: data.email,
+                     name: data?.name,
+                     photoUrl: photo,
+                     role: "student",
+                  };
+
+                  fetch(
+                     "https://shutter-school-server-monsur776.vercel.app/users",
+                     {
+                        method: "POST",
+                        headers: {
+                           "content-type": "application/json",
+                        },
+                        body: JSON.stringify(saveUser),
+                     }
+                  )
+                     .then((res) => res.json())
+                     .then((data) => {
+                        console.log(data);
+                        if (data.insertedId) {
+                           Swal.fire({
+                              position: "center",
+                              icon: "success",
+                              title: "Account created successfully",
+                              showConfirmButton: false,
+                              timer: 1500,
+                           });
+                           navigate("/");
+                        }
+                     });
+               })
+               .catch((err) => console.log(err));
          })
          .catch((err) => {
             console.log(err);
          });
-
-      createUser(data?.email, data?.password)
-         .then((result) => {
-            const createdUser = result.user;
-            updateName(data?.name, photo);
-
-            const saveUser = {
-               email: data.email,
-               name: data?.name,
-               photoUrl: photo,
-               role: "student",
-            };
-
-            fetch("http://localhost:5000/users", {
-               method: "POST",
-               headers: {
-                  "content-type": "application/json",
-               },
-               body: JSON.stringify(saveUser),
-            })
-               .then((res) => res.json())
-               .then((data) => {
-                  console.log(data);
-                  if (data.insertedId) {
-                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Account created successfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                     });
-                     navigate("/");
-                  }
-               });
-         })
-         .catch((err) => console.log(err));
    };
 
    return (
