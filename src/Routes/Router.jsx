@@ -21,6 +21,7 @@ import MyPayment from "../Pages/DashBoard/Student/MyPayment/MyPayment";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import Error from "../Error/Error";
+import MyPaymentHistory from "../Pages/DashBoard/Student/MyPaymentHistory/MyPaymentHistory";
 
 const router = createBrowserRouter([
    {
@@ -34,11 +35,7 @@ const router = createBrowserRouter([
          },
          {
             path: "/instructor",
-            element: (
-               <PrivateRoute>
-                  <Instructor></Instructor>
-               </PrivateRoute>
-            ),
+            element: <Instructor></Instructor>,
          },
          {
             path: "login",
@@ -111,6 +108,10 @@ const router = createBrowserRouter([
          {
             path: "payment/:id",
             element: <MyPayment></MyPayment>,
+         },
+         {
+            path: "paymenthistory",
+            element: <MyPaymentHistory></MyPaymentHistory>,
          },
       ],
    },

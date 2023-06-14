@@ -102,7 +102,9 @@ const DashBoard = () => {
                                  <FaWallet></FaWallet> My enrolled class
                               </span>
                            </ActiveLink>
-                           <ActiveLink className="" to="/dashboard/mypayment">
+                           <ActiveLink
+                              className=""
+                              to="/dashboard/paymenthistory">
                               <span className="font-semibold btn-ghost btn btn-block">
                                  <FaHistory></FaHistory> My payment History
                               </span>

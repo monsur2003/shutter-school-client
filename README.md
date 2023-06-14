@@ -8,6 +8,8 @@ ShutterSchool: Unleashing the Art of Photography
 
 ### live link
 
+-  https://shutter-school-auth.web.app/
+
 ## Description
 
 ShutterSchool is an online learning platform designed to provide photography enthusiasts with a comprehensive and interactive educational experience. Whether you're a beginner or an experienced photographer looking to enhance your skills, ShutterSchool offers a range of courses taught by industry professionals. Dive into various photography techniques, composition principles, post-processing tips, and more through engaging video lessons, practical assignments, and community forums. Join ShutterSchool and unlock your full creative potential behind the lens

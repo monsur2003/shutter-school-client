@@ -19,6 +19,8 @@ const MyEnrolledClass = () => {
       },
    });
 
+   console.log(enrolledClasses);
+
    return (
       <div>
          <Helmet>
