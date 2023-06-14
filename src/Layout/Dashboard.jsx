@@ -30,15 +30,14 @@ const DashBoard = () => {
    console.log(isAdmin, isInstructor);
    return (
       <>
-         <Navbar></Navbar>
          <div className="">
             <Helmet>
                <title>Shutter | dashboard</title>
             </Helmet>
             <div className="flex">
-               <div className="w-[25%]  border-r-4 bg-gray-400 border-blue-600 min-h-full">
+               <div className="w-[25%] border-r-4 bg-[#080871] text-gray-400 border-blue-600 h-[1000vh]">
                   <div className="flex flex-col justify-center items-center py-3 border-b-2 border-gray-500">
-                     <div className="border-4 border-blue-900 rounded-full">
+                     <div className="border-4 border-pink-900 rounded-full">
                         {user ? (
                            <img
                               className="w-[100px] h-[100px] rounded-full"
@@ -111,8 +110,8 @@ const DashBoard = () => {
                         </>
                      )}
 
-                     <div className="divider"></div>
-                     <Link>
+                     <div className="border-t-2 border-gray-400"></div>
+                     <Link to="/">
                         <button className="btn btn-ghost w-full">
                            <FaHome className=""></FaHome> Home
                         </button>
@@ -124,12 +123,11 @@ const DashBoard = () => {
                      </Link>
                   </div>
                </div>
-               <div className="w-[75%] mx-auto">
+               <div className="w-[75%]  mx-auto">
                   <Outlet></Outlet>
                </div>
             </div>
          </div>
-         <Footer></Footer>
       </>
    );
 };

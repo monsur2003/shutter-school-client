@@ -113,7 +113,7 @@ const CheckoutForm = ({ selectedItem }) => {
                className="btn btn-primary btn-sm mt-4"
                type="submit"
                disabled={!stripe || !clientSecret || processing}>
-               Pay
+               {`Pay ${price}$`}
             </button>
          </form>
          {cardError && <p className="text-red-600 ml-8">{cardError}</p>}

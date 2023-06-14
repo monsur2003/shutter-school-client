@@ -69,7 +69,7 @@ const AddClass = () => {
          </Helmet>
          <form
             onSubmit={handleAdd}
-            className="border-2 w-[80%] mx-auto bordergray-300 p-6 rounded-2xl shadow-2xl">
+            className="border-2 w-[80%] my-5 border-blue-600 mx-auto bordergray-300 p-6 rounded-2xl shadow-2xl">
             <h2 className="text-4xl font-bold text-center my-3">
                Add a class{" "}
             </h2>

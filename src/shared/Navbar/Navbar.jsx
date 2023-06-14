@@ -35,7 +35,7 @@ const Navbar = () => {
 
    return (
       <>
-         <nav className="  bg-blue-950 md:py-4 md:px-10">
+         <nav className=" border-b-2 bg-[#0404aa] border-blue-950 md:py-4 md:px-10">
             <div
                className="cursor-pointer md:hidden flex h-16 py-4 items-center justify-around"
                onClick={() => setIsOpen(!isOpen)}>

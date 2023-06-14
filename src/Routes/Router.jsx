@@ -20,11 +20,13 @@ import DashBoardHome from "../Pages/DashBoard/DashBoardHome/DashBoardHome";
 import MyPayment from "../Pages/DashBoard/Student/MyPayment/MyPayment";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Error from "../Error/Error";
 
 const router = createBrowserRouter([
    {
       path: "/",
       element: <Main></Main>,
+      errorElement: <Error></Error>,
       children: [
          {
             path: "/",
@@ -59,6 +61,7 @@ const router = createBrowserRouter([
             <DashBoard></DashBoard>
          </PrivateRoute>
       ),
+      errorElement: <Error></Error>,
       children: [
          {
             path: "/dashboard",
